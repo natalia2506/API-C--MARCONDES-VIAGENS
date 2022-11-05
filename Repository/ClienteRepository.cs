@@ -1,5 +1,4 @@
 
-
 using marcondes.DataBase;
 using marcondes.Model;
 using Microsoft.EntityFrameworkCore;

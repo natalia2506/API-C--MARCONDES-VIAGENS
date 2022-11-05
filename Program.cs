@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ClienteDbContext>(
 );
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-
+builder.Services.AddScoped<IViagemRepository, ViagemRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

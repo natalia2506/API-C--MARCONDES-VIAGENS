@@ -12,6 +12,8 @@ namespace marcondes.DataBase
 
         public DbSet<Cliente> Clientes { get; set; }
 
+        public DbSet<Viagem> Viagens { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder) { 
             var cliente = modelBuilder.Entity<Cliente>();
             cliente.ToTable("cliente");
@@ -28,6 +30,18 @@ namespace marcondes.DataBase
             cliente.Property(x => x.Cidade).HasColumnName("cidade");
             cliente.Property(x => x.Cep).HasColumnName("cep");
             cliente.Property(x => x.Email).HasColumnName("email");
+            
+
+            var viagem = modelBuilder.Entity<Viagem>();
+            viagem.ToTable("viagem");
+            viagem.HasKey(x => x.Id);
+            viagem.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
+            viagem.Property(x => x.Destino).HasColumnName("destino").IsRequired();
+            viagem.Property(x => x.Origem).HasColumnName("origem").IsRequired();
+            viagem.Property(x => x.DataIdaVolta).HasColumnName("data_ida_volta").IsRequired();
+            viagem.Property(x => x.Valor).HasColumnName("valor").IsRequired();
+
+           
         }
     }
 }
