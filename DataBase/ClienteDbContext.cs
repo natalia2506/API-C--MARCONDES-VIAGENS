@@ -14,6 +14,8 @@ namespace marcondes.DataBase
 
         public DbSet<Viagem> Viagens { get; set; }
 
+         public DbSet<Usuario> Usuarios { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder) { 
             var cliente = modelBuilder.Entity<Cliente>();
             cliente.ToTable("cliente");
@@ -40,6 +42,13 @@ namespace marcondes.DataBase
             viagem.Property(x => x.Origem).HasColumnName("origem").IsRequired();
             viagem.Property(x => x.DataIdaVolta).HasColumnName("data_ida_volta").IsRequired();
             viagem.Property(x => x.Valor).HasColumnName("valor").IsRequired();
+
+            var usuario = modelBuilder.Entity<Usuario>();
+            usuario.ToTable("usuario");
+            usuario.HasKey(x => x.Id);
+            usuario.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
+            usuario.Property(x => x.Nome).HasColumnName("nome").IsRequired();
+            usuario.Property(x => x.DataNascimento).HasColumnName("data_nascimento");
 
            
         }
